@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 class Program(models.Model):
     """Model untuk program belajar yang ditawarkan PKBM."""
@@ -44,5 +45,24 @@ class Galeri(models.Model):
             self.bulan = self.tanggal_upload.strftime('%m')
         super().save(*args, **kwargs)
 
-    
+
+class Berita(models.Model):
+    judul = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True, blank=True)
+    kategori = models.CharField(max_length=100)
+    isi = models.TextField()
+    gambar = models.ImageField(upload_to='berita/')
+    penulis = models.CharField(max_length=100, default="Admin")
+    tanggal_publikasi = models.DateField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-tanggal_publikasi']
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.judul)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.judul
 
