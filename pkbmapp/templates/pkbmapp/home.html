@@ -1,0 +1,286 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Hero Section -->
+<section id="hero" class="hero section">
+
+  <div class="hero-wrapper">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 hero-content" data-aos="fade-right" data-aos-delay="100">
+          <h1>Selamat Datang di PKBM AS SYAR’IYAH ILUNG</h1>
+          <p>Pusat Kegiatan Belajar Masyarakat (PKBM) AS SYAR’IYAH ILUNG hadir sebagai wadah pendidikan non-formal yang berkomitmen untuk memberikan kesempatan belajar bagi semua kalangan masyarakat.</p>
+          <div class="stats-row">
+            {% comment %} <div class="stat-item">
+              <span class="stat-number">96%</span>
+              <span class="stat-label">Employment Rate</span>
+            </div> {% endcomment %}
+            <div class="stat-item">
+              <span class="stat-number">12:1</span>
+              <span class="stat-label">Rasio Guru-Siswa</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">3</span>
+              <span class="stat-label">Program</span>
+            </div>
+          </div>
+          <div class="action-buttons">
+            <a href="#" class="btn-primary">Daftar Sekarang</a>
+          </div>
+        </div>
+        <div class="col-lg-6 hero-media" data-aos="zoom-in" data-aos-delay="200">
+          <img src="{% static 'img/pkbm/PKBM-Profil.webp' %}" alt="Education" class="img-fluid main-image">
+          <div class="image-overlay">
+            <div class="badge-accredited">
+              <i class="bi bi-patch-check-fill"></i>
+              <span>Terakredtasi Baik</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature Cards -->
+<section class="feature-cards-wrapper py-5" data-aos="fade-up" data-aos-delay="100">
+  <div class="container">
+    <div class="row gy-4">
+      
+      <!-- Card 1 -->
+    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-card p-4 h-100 d-flex align-items-start">
+          <div class="feature-icon me-3">
+            <i class="bi bi-book-fill fs-1 text-primary"></i>
+          </div>
+            <div class="feature-content">
+            <h3 class="h5 fw-bold">Kurikulum Inovatif</h3>
+            <p class="text-muted mb-0">
+                Pembelajaran dirancang sesuai kebutuhan masyarakat dengan metode yang kreatif, fleksibel, dan relevan dengan perkembangan zaman.
+            </p>
+          </div>
+        </div>
+    </div>
+
+
+      <!-- Card 2 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-card p-4 h-100 d-flex align-items-start">
+          <div class="feature-icon mb-3">
+            <i class="bi bi-laptop-fill fs-1 text-success"></i>
+          </div>
+          <div class="feature-content">
+            <h3 class="h5 fw-bold">Fasilitas</h3>
+            <p class="text-muted mb-0">Menyediakan sarana pendukung belajar yang nyaman dan memadai agar proses belajar semakin efektif.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="feature-card p-4 h-100 d-flex align-items-start">
+          <div class="feature-icon mb-3">
+            <i class="bi bi-people-fill fs-1 text-warning"></i>
+          </div>
+          <div class="feature-content">
+            <h3 class="h5 fw-bold">Guru Berpengalaman</h3>
+            <p class="text-muted mb-0">Tenaga pendidik yang kompeten, berdedikasi, dan siap membimbing peserta belajar menuju keberhasilan.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Upcoming Event -->
+  <div class="upcoming-event" data-aos="fade-up" data-aos-delay="400">
+    <div class="container">
+      <div class="event-content">
+        <div class="event-date">
+          <span class="day">15</span>
+          <span class="month">NOV</span>
+        </div>
+        <div class="event-info">
+          <h3>Spring Semester Open House</h3>
+          <p>Join us to explore campus facilities, meet our faculty, and learn about scholarship opportunities.</p>
+        </div>
+        <div class="event-action">
+          <a href="#" class="btn-event">RSVP Now</a>
+          <span class="countdown">Starts in 3 weeks</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- /Hero Section -->
+
+<!-- Featured Programs Section -->
+<section id="featured-programs" class="featured-programs section d-flex align-items-center justify-content-center">
+  <div class="container text-center" data-aos="fade-up">
+    <h2>Nama Program</h2>
+    <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+
+    <div class="d-flex justify-content-center mt-4" data-aos="zoom-in" data-aos-delay="100">
+      <div class="col-lg-6">
+        <div class="program-banner">
+          <div class="banner-image">
+            <img src="{% static 'img/education/campus-3.webp' %}" alt="Program" class="img-fluid">
+            <div class="banner-badge"><span class="badge-text">Popular</span></div>
+          </div>
+          <div class="banner-info text-center">
+            <div class="program-header">
+              <h3>Engineering &amp; Technology</h3>
+              <div class="program-stats">
+                <span><i class="bi bi-people-fill"></i> 450+ Students</span>
+                <span><i class="bi bi-award-fill"></i> 95% Success Rate</span>
+              </div>
+            </div>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</p>
+            <div class="program-details">
+              <div class="detail-item"><i class="bi bi-calendar-check"></i> Duration: 4 Years</div>
+              <div class="detail-item"><i class="bi bi-mortarboard-fill"></i> Bachelor's Degree</div>
+            </div>
+            <a href="#" class="discover-btn">Detail Program</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /Featured Programs Section -->
+
+<!-- Recent News Section -->
+    <section id="recent-news" class="recent-news section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Berita Terkini</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="100">
+            <article class="post-item d-flex">
+              <div class="post-img">
+                <img src="{% static "img/blog/blog-post-1.webp" %}" alt="" class="img-fluid" loading="lazy">
+              </div>
+
+              <div class="post-content flex-grow-1">
+                <a href="#" class="category">Design</a>
+
+                <h2 class="post-title">
+                  <a href="#">Sed ut perspiciatis unde omnis</a>
+                </h2>
+
+                <p class="post-description">
+                  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.
+                </p>
+
+                <div class="post-meta">
+                  <div class="post-author">
+                    <img src="{% static "/img/person/person-f-12.webp" %}" alt="" class="img-fluid">
+                    <span class="author-name">Lina Chen</span>
+                  </div>
+                  <span class="post-date">Mar 15, 2025</span>
+                </div>
+              </div>
+            </article>
+          </div><!-- End post item -->
+
+          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="200">
+            <article class="post-item d-flex">
+              <div class="post-img">
+                <img src="{% static "/img/blog/blog-post-2.webp" %}" alt="" class="img-fluid" loading="lazy">
+              </div>
+
+              <div class="post-content flex-grow-1">
+                <a href="#" class="category">Product</a>
+
+                <h2 class="post-title">
+                  <a href="#">At vero eos et accusamus</a>
+                </h2>
+
+                <p class="post-description">
+                  Et harum quidem rerum facilis est et expedita distinctio nam libero tempore, cum soluta nobis est eligendi.
+                </p>
+
+                <div class="post-meta">
+                  <div class="post-author">
+                    <img src="{% static "/img/person/person-f-13.webp" %}" alt="" class="img-fluid">
+                    <span class="author-name">Sofia Rodriguez</span>
+                  </div>
+                  <span class="post-date">Apr 22, 2025</span>
+                </div>
+              </div>
+            </article>
+          </div><!-- End post item -->
+
+          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
+            <article class="post-item d-flex">
+              <div class="post-img">
+                <img src="{% static "/img/blog/blog-post-3.webp" %}" alt="" class="img-fluid" loading="lazy">
+              </div>
+
+              <div class="post-content flex-grow-1">
+                <a href="#" class="category">Software Engineering</a>
+
+                <h2 class="post-title">
+                  <a href="#">Temporibus autem quibusdam</a>
+                </h2>
+
+                <p class="post-description">
+                  Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur.
+                </p>
+
+                <div class="post-meta">
+                  <div class="post-author">
+                    <img src="{% static "img/person/person-m-10.webp" %}" alt="" class="img-fluid">
+                    <span class="author-name">Lucas Thompson</span>
+                  </div>
+                  <span class="post-date">May 8, 2025</span>
+                </div>
+              </div>
+            </article>
+          </div><!-- End post item -->
+
+          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="400">
+            <article class="post-item d-flex">
+              <div class="post-img">
+                <img src="{% static "/img/blog/blog-post-4.webp" %}" alt="" class="img-fluid" loading="lazy">
+              </div>
+
+              <div class="post-content flex-grow-1">
+                <a href="#" class="category">Creative</a>
+
+                <h2 class="post-title">
+                  <a href="#">Nam libero tempore soluta</a>
+                </h2>
+
+                <p class="post-description">
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+
+                <div class="post-meta">
+                  <div class="post-author">
+                    <img src="{% static "img/person/person-f-14.webp" %}" alt="" class="img-fluid">
+                    <span class="author-name">Emma Patel</span>
+                  </div>
+                  <span class="post-date">Jun 30, 2025</span>
+                </div>
+              </div>
+            </article>
+          </div><!-- End post item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Recent News Section -->
+
+{% endblock %}

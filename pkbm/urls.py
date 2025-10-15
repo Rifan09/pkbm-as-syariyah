@@ -16,22 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from pkbmapp import views
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     
-   # profiles sebagai root
+   # profile sebagai root
     path('', include('pkbmapp.urls')),
 
-#     # UI Publik
-#     path('sekolah/', views.sekolah_detail, name="sekolah_detail"),
-#     path('sekolah/edit/', views.sekolah_update, name="sekolah_update"),
+    path('pendaftaran/', include('pendaftaran.urls'))
 
-#     path('program/', views.program_list, name="program_list"),
-#     path('program/add/', views.program_create, name="program_create"),
-#     path('program/<int:pk>/edit/', views.program_update, name="program_update"),
-#     path('program/<int:pk>/delete/', views.program_delete, name="program_delete"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

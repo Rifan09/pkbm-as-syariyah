@@ -1,0 +1,48 @@
+from django.db import models
+
+class Program(models.Model):
+    """Model untuk program belajar yang ditawarkan PKBM."""
+    nama = models.CharField(max_length=100, help_text="Contoh: Paket C Setara SMA")
+    deskripsi = models.TextField()
+
+    def __str__(self):
+        return self.nama
+
+
+class Pendaftar(models.Model):
+    """Model untuk menyimpan data siswa yang mendaftar."""
+    nama_lengkap = models.CharField(max_length=150)
+    tanggal_lahir = models.DateField()
+    alamat = models.TextField()
+    nomor_telepon = models.CharField(max_length=15)
+    email = models.EmailField(unique=True)
+    
+    # Relasi ke Program: Setiap pendaftar memilih satu program.
+    # Jika program dihapus, data pendaftar terkait juga akan terhapus (CASCADE).
+    program_pilihan = models.ForeignKey(Program, on_delete=models.CASCADE)
+    
+    tanggal_pendaftaran = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.nama_lengkap} - {self.program_pilihan.nama}"
+    
+class Galeri(models.Model):
+    BULAN_CHOICES = [
+        ('01', 'Januari'), ('02', 'Februari'), ('03', 'Maret'),
+        ('04', 'April'), ('05', 'Mei'), ('06', 'Juni'),
+        ('07', 'Juli'), ('08', 'Agustus'), ('09', 'September'),
+        ('10', 'Oktober'), ('11', 'November'), ('12', 'Desember'),
+    ]
+    judul = models.CharField(max_length=100)
+    deskripsi = models.TextField(blank=True)
+    foto = models.ImageField(upload_to='galeri/')
+    tanggal_upload = models.DateTimeField(auto_now_add=True)
+    bulan = models.CharField(max_length=2, choices=BULAN_CHOICES, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.bulan and self.tanggal_upload:
+            self.bulan = self.tanggal_upload.strftime('%m')
+        super().save(*args, **kwargs)
+
+    
+
