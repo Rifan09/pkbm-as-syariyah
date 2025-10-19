@@ -16,84 +16,68 @@
       </div>
     </div>
 
-<section>
-<div class="container" data-aos="fade-up" data-aos-delay="100">
-  <div class="row gy-5">
-    <!-- Banner 1 -->
-    <div class="col-lg-4" data-aos="fade-right" data-aos-delay="100">
-      <div class="program-banner">
-        <div class="banner-image">
-          <img src="{% static 'img/education/campus-3.webp' %}" alt="Program" class="img-fluid">
-          <div class="banner-badge"><span class="badge-text">Popular</span></div>
-        </div>
-        <div class="banner-info">
-          <div class="program-header">
-            <h3>Engineering &amp; Technology</h3>
-            <div class="program-stats">
-              <span><i class="bi bi-people-fill"></i> 450+ Students</span>
-              <span><i class="bi bi-award-fill"></i> 95% Success Rate</span>
-            </div>
-          </div>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</p>
-          <div class="program-details">
-            <div class="detail-item"><i class="bi bi-calendar-check"></i> Duration: 4 Years</div>
-            <div class="detail-item"><i class="bi bi-mortarboard-fill"></i> Bachelor's Degree</div>
-          </div>
-          <a href="#" class="discover-btn">Discover Program</a>
-        </div>
-      </div>
+<!-- ======= Discover Programs Section ======= -->
+
+<section id="programs" class="py-5 bg-light">
+  <div class="container" data-aos="fade-up">
+
+    <!-- Section Title -->
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-dark">Program Pendidikan</h2>
+      <p class="text-muted mx-auto" style="max-width: 600px;">
+        Temukan jenjang pendidikan kesetaraan yang sesuai dengan kebutuhan dan semangat belajar Anda.
+      </p>
     </div>
 
-    <!-- Banner 2 -->
-    <div class="col-lg-4" data-aos="fade-right" data-aos-delay="200">
-      <div class="program-banner">
-        <div class="banner-image">
-          <img src="{% static 'img/education/campus-2.webp' %}" alt="Program" class="img-fluid">
-          <div class="banner-badge"><span class="badge-text">New</span></div>
-        </div>
-        <div class="banner-info">
-          <div class="program-header">
-            <h3>Business &amp; Management</h3>
-            <div class="program-stats">
-              <span><i class="bi bi-people-fill"></i> 300+ Students</span>
-              <span><i class="bi bi-award-fill"></i> 90% Success Rate</span>
-            </div>
+    <!-- Program Cards -->
+    <div class="row g-4">
+
+      <!-- Paket A -->
+      <div class="col-lg-4 col-md-6">
+        <div class="program-card card border-0 shadow-sm h-100">
+          <img src="{% static 'img/education/campus-1.webp' %}" class="program-img" alt="Paket A">
+          <div class="p-4 bg-white">
+            <h5 class="fw-bold mb-2 text-primary">Paket A (Setara SD)</h5>
+            <p class="text-muted small mb-3">
+              Menyediakan pembelajaran dasar untuk mengembangkan kemampuan baca, tulis, hitung, dan karakter mandiri.
+            </p>
+            <a href="{% url 'pendaftaran' %}" class="btn btn-outline-primary btn-sm rounded-pill">Pelajari Lebih Lanjut</a>
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-          <div class="program-details">
-            <div class="detail-item"><i class="bi bi-calendar-check"></i> Duration: 3 Years</div>
-            <div class="detail-item"><i class="bi bi-mortarboard-fill"></i> Diploma</div>
-          </div>
-          <a href="#" class="discover-btn">Discover Program</a>
         </div>
       </div>
+
+      <!-- Paket B -->
+      <div class="col-lg-4 col-md-6">
+        <div class="program-card card border-0 shadow-sm h-100">
+          <img src="{% static 'img/education/campus-1.webp' %}" class="program-img" alt="Paket B">
+          <div class="p-4 bg-white">
+            <h5 class="fw-bold mb-2 text-primary">Paket B (Setara SMP)</h5>
+            <p class="text-muted small mb-3">
+              Memberikan pengetahuan umum dan keterampilan sosial bagi peserta didik untuk melanjutkan ke jenjang lebih tinggi.
+            </p>
+            <a href="{% url 'pendaftaran' %}" class="btn btn-outline-primary btn-sm rounded-pill">Pelajari Lebih Lanjut</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paket C -->
+      <div class="col-lg-4 col-md-6">
+        <div class="program-card card border-0 shadow-sm h-100">
+          <img src="{% static 'img/education/campus-1.webp' %}" class="program-img" alt="Paket C">
+          <div class="p-4 bg-white">
+            <h5 class="fw-bold mb-2 text-primary">Paket C (Setara SMA)</h5>
+            <p class="text-muted small mb-3">
+              Menyiapkan peserta didik untuk perguruan tinggi atau dunia kerja melalui pembelajaran fleksibel dan terarah.
+            </p>
+            <a href="{% url 'pendaftaran' %}" class="btn btn-outline-primary btn-sm rounded-pill">Pelajari Lebih Lanjut</a>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Banner 3 -->
-    <div class="col-lg-4" data-aos="fade-right" data-aos-delay="300">
-      <div class="program-banner">
-        <div class="banner-image">
-          <img src="{% static 'img/education/campus-1.webp' %}" alt="Program" class="img-fluid">
-          <div class="banner-badge"><span class="badge-text">Featured</span></div>
-        </div>
-        <div class="banner-info">
-          <div class="program-header">
-            <h3>Health &amp; Nursing</h3>
-            <div class="program-stats">
-              <span><i class="bi bi-people-fill"></i> 200+ Students</span>
-              <span><i class="bi bi-award-fill"></i> 92% Success Rate</span>
-            </div>
-          </div>
-          <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit.</p>
-          <div class="program-details">
-            <div class="detail-item"><i class="bi bi-calendar-check"></i> Duration: 2 Years</div>
-            <div class="detail-item"><i class="bi bi-mortarboard-fill"></i> Certificate</div>
-          </div>
-          <a href="#" class="discover-btn">Discover Program</a>
-        </div>
-      </div>
-    </div>
-  </div> <!-- row -->
-</div> <!-- container -->
+  </div>
 </section>
+<!-- ======= End Programs Section ======= -->
+
 {% endblock %}

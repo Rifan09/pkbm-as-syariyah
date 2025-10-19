@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Program Paket A - PKBM As Syari'yah{% endblock %}
+
+{% block content %}
+
+<!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Program</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'program' %}">Program</a></li>
+            <li class="current">Paket A</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+<section id="paket-a" class="py-5 bg-light">
+  <div class="container" data-aos="fade-up">
+
+    <!-- Header -->
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-dark">Program Kesetaraan Paket A</h2>
+      <p class="text-muted mx-auto" style="max-width: 700px;">
+        Pendidikan setara Sekolah Dasar yang membantu warga belajar mengembangkan kemampuan dasar dan membangun karakter mandiri.
+      </p>
+    </div>
+
+    <!-- Image + Description -->
+    <div class="row align-items-center g-4 mb-5">
+      <div class="col-lg-6">
+        <img src="{% static 'img/pkbm/anak-SD.jpg' %}" class="img-fluid rounded shadow-sm" alt="Program Paket A">
+      </div>
+      <div class="col-lg-6">
+        <h4 class="fw-semibold mb-3">Tentang Program</h4>
+        <p>
+          Program Paket A di PKBM As Syari’yah merupakan layanan pendidikan kesetaraan setara jenjang Sekolah Dasar (SD).
+          Program ini memberikan kesempatan bagi masyarakat untuk memperoleh pendidikan dasar melalui pembelajaran kontekstual,
+          fleksibel, dan berorientasi pada pengembangan kecakapan hidup.
+        </p>
+        <p>
+          Fokus utama program ini adalah pembentukan karakter, literasi dasar, serta kemampuan numerasi sebagai bekal menuju jenjang pendidikan selanjutnya.
+        </p>
+      </div>
+    </div>
+
+    <!-- Revisi Visi Misi -->
+    <div class="mb-5">
+      <h4 class="fw-semibold text-dark mb-3">Visi & Misi</h4>
+      <p><strong>Visi:</strong></p>
+      <p>“Mewujudkan warga belajar yang cerdas, mandiri, berkarakter, dan memiliki dasar ilmu pengetahuan yang kuat sebagai bekal menuju kehidupan yang lebih baik.”</p>
+      <p><strong>Misi:</strong></p>
+      <ul>
+        <li>Menyelenggarakan pendidikan dasar yang setara dengan SD untuk memberikan kesempatan belajar kepada seluruh lapisan masyarakat.</li>
+        <li>Mengembangkan kemampuan membaca, menulis, berhitung, dan berpikir kritis sebagai fondasi utama belajar sepanjang hayat.</li>
+        <li>Menanamkan nilai-nilai karakter Islami, kedisiplinan, tanggung jawab, dan rasa hormat kepada sesama.</li>
+        <li>Melaksanakan pembelajaran yang menyenangkan, kontekstual, dan berbasis pada kehidupan sehari-hari.</li>
+        <li>Mendorong warga belajar agar mampu beradaptasi dengan perubahan sosial dan teknologi sejak dini.</li>
+      </ul>
+    </div>
+
+    <!-- Persyaratan -->
+    <div class="bg-white p-4 rounded shadow-sm mb-5">
+      <h4 class="fw-semibold text-dark mb-3">Persyaratan Pendaftaran</h4>
+      <ol>
+        <li>Fotokopi Kartu Keluarga 1 lembar</li>
+        <li>Fotokopi Ijazah terakhir 1 lembar</li>
+        <li>Pas Foto 3×4 sebanyak 3 lembar</li>
+        <li>Uang pendaftaran Rp 20.000,-</li>
+        <li>Mengisi formulir pendaftaran</li>
+        <li>Rapor sekolah asal (bagi yang pindahan)</li>
+        <li>Surat keterangan pernah sekolah (bagi yang pindahan)</li>
+      </ol>
+    </div>
+
+    <!-- Kontak -->
+    <div class="text-center">
+      <h5 class="fw-bold mb-2">Informasi & Pendaftaran</h5>
+      <p class="mb-1">Hikmatunnisa, S.Pd.I — <a href="tel:085254413656">0852 5441 3656</a></p>
+      <p class="mb-3">Saleha, S.Pd — <a href="tel:085240889156">0852 4088 9156</a></p>
+      <p class="text-muted small">
+        Alamat: Jl. H. Damanhuri RT.05 RW.03, Kec. Barabai, Kab. Hulu Sungai Tengah (HST)
+      </p>
+    </div>
+
+  </div>
+</section>
+{% endblock %}
