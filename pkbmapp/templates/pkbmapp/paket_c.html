@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Program Paket C - PKBM As Syari'yah{% endblock %}
+
+{% block content %}
+
+<!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Program</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'program' %}">Program</a></li>
+            <li class="current">Paket C</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+<section id="paket-c" class="py-5 bg-light">
+  <div class="container" data-aos="fade-up">
+
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-dark">Program Kesetaraan Paket C</h2>
+      <p class="text-muted mx-auto" style="max-width: 700px;">
+        Pendidikan setara Sekolah Menengah Atas (SMA) yang mempersiapkan peserta didik untuk studi lanjut atau dunia kerja.
+      </p>
+    </div>
+
+    <div class="row align-items-center g-4 mb-5">
+      <div class="col-lg-6">
+        <img src="{% static 'img/pkbm/anak-SMA.jpg' %}" class="img-fluid rounded shadow-sm" alt="Program Paket C">
+      </div>
+      <div class="col-lg-6">
+        <h4 class="fw-semibold mb-3">Tentang Program</h4>
+        <p>
+          Program Paket C memberikan kesempatan kepada masyarakat untuk menempuh pendidikan setara SMA.  
+          Melalui kurikulum adaptif dan pembelajaran berbasis proyek, peserta didik diarahkan untuk berpikir kritis, komunikatif, dan siap menghadapi dunia kerja atau perguruan tinggi.
+        </p>
+        <p>
+          PKBM As Syari’yah mendukung peserta didik menjadi individu yang berakhlak, berwawasan luas, dan berdaya saing.
+        </p>
+      </div>
+    </div>
+
+    <div class="mb-5">
+      <h4 class="fw-semibold text-dark mb-3">Visi & Misi</h4>
+      <p><strong>Visi:</strong> Mencerdaskan warga masyarakat melalui pendidikan non-formal untuk kehidupan yang lebih sejahtera dan mandiri.</p>
+      <p><strong>Misi:</strong></p>
+      <ul>
+        <li>Melaksanakan pendidikan kesetaraan tingkat SMA yang relevan dengan kebutuhan peserta didik.</li>
+        <li>Meningkatkan kemampuan akademik dan keterampilan abad 21 (critical thinking, creativity, collaboration).</li>
+        <li>Menumbuhkan semangat belajar sepanjang hayat dan tanggung jawab sosial.</li>
+        <li>Membekali peserta didik agar siap kuliah atau bekerja sesuai minat dan bakatnya.</li>
+      </ul>
+    </div>
+
+    <div class="bg-white p-4 rounded shadow-sm mb-5">
+      <h4 class="fw-semibold text-dark mb-3">Persyaratan Pendaftaran</h4>
+      <ol>
+        <li>Fotokopi Kartu Keluarga 1 lembar</li>
+        <li>Fotokopi Ijazah terakhir 1 lembar</li>
+        <li>Pas Foto 3×4 sebanyak 3 lembar</li>
+        <li>Uang pendaftaran Rp 20.000,-</li>
+        <li>Mengisi formulir pendaftaran</li>
+        <li>Rapor sekolah asal (bagi yang pindahan)</li>
+        <li>Surat keterangan pernah sekolah (bagi yang pindahan)</li>
+      </ol>
+    </div>
+
+    <div class="text-center">
+      <h5 class="fw-bold mb-2">Informasi & Pendaftaran</h5>
+      <p class="mb-1">Hikmatunnisa, S.Pd.I — <a href="tel:085254413656">0852 5441 3656</a></p>
+      <p class="mb-3">Saleha, S.Pd — <a href="tel:085240889156">0852 4088 9156</a></p>
+      <p class="text-muted small">
+        Alamat: Jl. H. Damanhuri RT.05 RW.03, Kec. Barabai, Kab. Hulu Sungai Tengah (HST)
+      </p>
+    </div>
+
+  </div>
+</section>
+{% endblock %}
