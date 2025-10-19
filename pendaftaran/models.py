@@ -28,4 +28,4 @@ class PendaftaranSiswa(models.Model):
     tanggal_daftar = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.nama_lengkap
+        return f"{self.nama_lengkap} - {self.get_program_pilihan_display()}"

@@ -37,6 +37,8 @@ class Galeri(models.Model):
     judul = models.CharField(max_length=100)
     deskripsi = models.TextField(blank=True)
     foto = models.ImageField(upload_to='galeri/')
+    video_url = models.URLField(blank=True, null=True, help_text="Masukkan URL video Facebook atau YouTube (opsional)")
+    video_file = models.FileField(upload_to='galeri/video/', blank=True, null=True, help_text="Upload video lokal (mp4/mov)")
     tanggal_upload = models.DateTimeField(auto_now_add=True)
     bulan = models.CharField(max_length=2, choices=BULAN_CHOICES, blank=True)
 

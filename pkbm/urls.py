@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from pendaftaran.admin_site import pendaftaran_admin_site
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('pendaftaran-admin/', pendaftaran_admin_site.urls), 
     
    # profile sebagai root
     path('', include('pkbmapp.urls')),

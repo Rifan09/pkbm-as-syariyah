@@ -5,7 +5,12 @@ from django.core.paginator import Paginator
 
 
 def home(request):
-    return render(request, 'pkbmapp/home.html')
+    # Ambil 4 berita terakhir berdasarkan tanggal publikasi
+    berita_terbaru = Berita.objects.all().order_by('-tanggal_publikasi')[:4]
+    context = {
+        'berita_terbaru': berita_terbaru,
+    }
+    return render(request, 'pkbmapp/home.html', context)
 
 def profil(request):
     return render(request, 'pkbmapp/profil.html')
@@ -13,9 +18,17 @@ def profil(request):
 def program(request):
     return render(request, 'pkbmapp/program.html')
 
+def paket_a(request):
+    return render(request, 'pkbmapp/paket_a.html')
+
+def paket_b(request):
+    return render(request, 'pkbmapp/paket_b.html')
+
+def paket_c(request):
+    return render(request, 'pkbmapp/paket_c.html')
+
 def kontak(request):
     return render(request, 'pkbmapp/kontak.html')
-
 
 def berita(request):
     berita_all = Berita.objects.all()
