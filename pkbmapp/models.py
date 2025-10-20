@@ -68,3 +68,13 @@ class Berita(models.Model):
     def __str__(self):
         return self.judul
 
+
+class MasukanSaran(models.Model):
+    nama = models.CharField(max_length=100)
+    email = models.EmailField()
+    subjek = models.CharField(max_length=150)
+    pesan = models.TextField()
+    tanggal_kirim = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.nama} - {self.subjek}"

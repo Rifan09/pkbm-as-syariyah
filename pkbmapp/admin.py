@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Program, Pendaftar, Galeri, Berita
+from .models import Program, Pendaftar, Galeri, Berita, MasukanSaran
 
 class PendaftarAdmin(admin.ModelAdmin):
     """Kustomisasi tampilan Pendaftar di halaman admin."""
@@ -11,6 +11,7 @@ class PendaftarAdmin(admin.ModelAdmin):
 admin.site.register(Program)
 admin.site.register(Pendaftar, PendaftarAdmin)
 
+@admin.register(Galeri)
 class GaleriAdmin(admin.ModelAdmin):
     list_display = ('judul', 'get_bulan_display', 'tanggal_upload', 'preview_image')
     list_filter = ('bulan', 'tanggal_upload')
@@ -33,11 +34,13 @@ class GaleriAdmin(admin.ModelAdmin):
         return "(Belum ada foto)"
     preview_image.short_description = "Preview Foto"
 
-admin.site.register(Galeri)
-
 @admin.register(Berita)
 class BeritaAdmin(admin.ModelAdmin):
     list_display = ('judul', 'kategori', 'penulis', 'tanggal_publikasi')
     prepopulated_fields = {'slug': ('judul',)}
 
-
+@admin.register(MasukanSaran)
+class MasukanSaranAdmin(admin.ModelAdmin):
+    list_display = ('nama', 'email', 'subjek', 'tanggal_kirim')
+    search_fields = ('nama', 'email', 'subjek')
+    readonly_fields = ('tanggal_kirim',)

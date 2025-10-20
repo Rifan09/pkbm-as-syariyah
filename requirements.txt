@@ -7,11 +7,11 @@ Pillow>=10.0.0
 # === Static Files (Production) ===
 whitenoise>=6.6.0
 
-# === Gunicorn (Server untuk deploy di Render/Heroku/Railway) ===
-gunicorn>=22.0.0
+# # === Gunicorn (Server untuk deploy di Render/Heroku/Railway) ===
+# gunicorn>=22.0.0
 
-# === Optional: Environment variable (.env) management ===
-python-dotenv>=1.0.1
+# # === Optional: Environment variable (.env) management ===
+# python-dotenv>=1.0.1
 
-# === Optional: Untuk PostgreSQL di hosting ===
-psycopg2-binary>=2.9.9
+# # === Optional: Untuk PostgreSQL di hosting ===
+# psycopg2-binary>=2.9.9

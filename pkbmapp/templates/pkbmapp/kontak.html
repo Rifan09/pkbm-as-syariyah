@@ -22,15 +22,7 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="contact-main-wrapper">
           <div class="map-wrapper">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52768637.09988814!2d95.29352882762345!3d-2.275835681513022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e0e5e37b2b2f8a9%3A0x3039d80b220c0a0!2sIndonesia!5e0!3m2!1sen!2sid!4v1727946945671!5m2!1sen!2sid" 
-              width="100%" 
-              height="450" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3607.0872816283904!2d115.40600837449163!3d-2.519577938216765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMsKwMzEnMTAuNSJTIDExNcKwMjQnMzAuOSJF!5e1!3m2!1sid!2sid!4v1760973028821!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
 
           <div class="contact-content">
@@ -41,7 +33,7 @@
                 </div>
                 <div class="contact-text">
                   <h4>Lokasi</h4>
-                  <p>8721 Broadway Avenue, New York, NY 10023</p>
+                  <p>Jl. H. Damanhuri RT.05 RW.03, Kec. Barabai, Kab. Hulu Sungai Tengah (HST)</p>
                 </div>
               </div>
 
@@ -61,8 +53,8 @@
                 </div>
                 <div class="contact-text">
                   <h4>Telpon</h4>
-                  <p>+1 (212) 555-7890</p>
-                  <p>+1 (212) 555-7890</p>
+                  <p>Hikmatunnisa, S.Pd.I — 0852 5441 3656</p>
+                  <p>Saleha, S.Pd — 0852 4088 9156</p>
                 </div>
               </div>
 
@@ -72,39 +64,44 @@
                 </div>
                 <div class="contact-text">
                   <h4>Jam Operasional</h4>
-                  <p>Monday-Friday: 9AM - 6PM</p>
+                  <p>Senin-Jum'at: 9AM - 6PM</p>
                 </div>
               </div>
             </div>
 
             <div class="contact-form-container" data-aos="fade-up" data-aos-delay="400">
-              <h3>Get in Touch</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua consectetur adipiscing.</p>
+                  <h3>Masukan & Saran</h3>
+                  <p>Silakan kirimkan pesan, pertanyaan, atau saran Anda untuk PKBM As-Syari’yah.</p>
 
-              <form action="forms/contact.php" method="post" class="php-email-form">
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
-                  </div>
-                  <div class="col-md-6 form-group mt-3 mt-md-0">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
-                  </div>
-                </div>
-                <div class="form-group mt-3">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
-                </div>
-                <div class="form-group mt-3">
-                  <textarea class="form-control" name="message" rows="5" placeholder="Message" required=""></textarea>
-                </div>
+                  <form method="POST" class="php-email-form">
+                    {% csrf_token %}
+                    <div class="row">
+                      <div class="col-md-6 form-group">
+                        {{ form.nama }}
+                      </div>
+                      <div class="col-md-6 form-group mt-3 mt-md-0">
+                        {{ form.email }}
+                      </div>
+                    </div>
+                    <div class="form-group mt-3">
+                      {{ form.subjek }}
+                    </div>
+                    <div class="form-group mt-3">
+                      {{ form.pesan }}
+                    </div>
 
-                <div class="my-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-                </div>
+                    <div class="my-3">
+                      {% if messages %}
+                        {% for message in messages %}
+                          <div class="alert alert-success mt-3">{{ message }}</div>
+                        {% endfor %}
+                      {% endif %}
+                    </div>
 
-                <div class="form-submit">
-                  <button type="submit">Send Message</button>
+                    <div class="text-center mt-4">
+                      <button type="submit" class="btn btn-primary px-4">Kirim Pesan</button>
+                    </div>
+                  </form>
                   <div class="social-links">
                     <a href="#"><i class="bi bi-twitter"></i></a>
                     <a href="#"><i class="bi bi-facebook"></i></a>
@@ -112,12 +109,10 @@
                     <a href="#"><i class="bi bi-linkedin"></i></a>
                   </div>
                 </div>
-              </form>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- /Contact Section -->
+  <!-- /Contact Section -->
 {% endblock %}

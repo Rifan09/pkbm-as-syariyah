@@ -1,6 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Galeri, Berita
 from django.core.paginator import Paginator
+from django.contrib import messages
+from .forms import MasukanSaranForm
 
 
 
@@ -27,8 +29,18 @@ def paket_b(request):
 def paket_c(request):
     return render(request, 'pkbmapp/paket_c.html')
 
+
 def kontak(request):
-    return render(request, 'pkbmapp/kontak.html')
+    if request.method == 'POST':
+        form = MasukanSaranForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Pesan Anda telah terkirim. Terima kasih atas masukannya!")
+            return redirect('kontak')
+    else:
+        form = MasukanSaranForm()
+
+    return render(request, 'pkbmapp/kontak.html', {'form': form})
 
 def berita(request):
     berita_all = Berita.objects.all()

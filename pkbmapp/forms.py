@@ -1,5 +1,5 @@
 from django import forms
-from .models import Pendaftar
+from .models import Pendaftar, MasukanSaran
 
 class PendaftaranForm(forms.ModelForm):
     class Meta:
@@ -41,4 +41,34 @@ class PendaftaranForm(forms.ModelForm):
         labels = {
             'program_pilihan': 'Pilih Program Belajar'
         }
+
+
+class MasukanSaranForm(forms.ModelForm):
+    class Meta:
+        model = MasukanSaran
+        fields = ['nama', 'email', 'subjek', 'pesan']
+        widgets = {
+            'nama': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Nama Lengkap Anda',
+                'required': True
+            }),
+            'email': forms.EmailInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Alamat Email',
+                'required': True
+            }),
+            'subjek': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Subjek Pesan',
+                'required': True
+            }),
+            'pesan': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Tulis pesan atau saran Anda di sini...',
+                'rows': 5,
+                'required': True
+            }),
+        }
+
 
