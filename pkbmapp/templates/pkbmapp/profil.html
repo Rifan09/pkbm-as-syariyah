@@ -36,7 +36,7 @@
         </p>
         <p>
           Sejak awal berdirinya, PKBM As Syari’yah berkomitmen menjadi lembaga pendidikan yang berorientasi pada pemberdayaan, pembentukan karakter religius,
-          serta peningkatan keterampilan hidup (life skill) peserta didik agar siap bersaing dan berkontribusi di masyarakat.
+          serta peningkatan keterampilan hidup peserta didik agar siap bersaing dan berkontribusi di masyarakat.
         </p>
       </div>
 
@@ -134,50 +134,40 @@
     <div class="section-header text-center mb-5">
       <span class="subtitle">Pendidik dan Tenaga Kependidikan Kami</span>
       <h2 class="title">Tim Profesional PKBM As-Syari’yah</h2>
-      <p class="description">Dibalik keberhasilan pembelajaran, terdapat dedikasi para pendidik dan instruktur hebat PKBM As-Syari’yah.</p>
+      <p class="description">
+        Dibalik keberhasilan pembelajaran, terdapat dedikasi para pendidik dan instruktur hebat PKBM As-Syari’yah.
+      </p>
     </div>
 
     <!-- Swiper Container -->
     <div class="swiper leadership-slider">
       <div class="swiper-wrapper">
 
-        {% comment %} LOOP 30 CARD {% endcomment %}
-        {% for i in "123456789012345678901234567890" %}
+        {% for guru in ptk_list %}
         <div class="swiper-slide">
-          <div class="team-card text-center shadow-sm rounded overflow-hidden">
-            <div class="card-inner p-3">
-              <div class="member-image mb-3">
-                <img src="{% static 'img/person/person-'|add:forloop.counter|stringformat:'s'|add:'.webp' %}"
-                     alt="PTK {{ forloop.counter }}" class="img-fluid rounded-circle" 
-                     style="width:150px; height:150px; object-fit:cover;">
-              </div>
-              <div class="member-info">
-                <h5 class="fw-bold mb-1">Nama PTK {{ forloop.counter }}</h5>
-                <p class="text-muted small mb-2">
-                  {% if forloop.counter == 1 %}Ketua PKBM
-                  {% elif forloop.counter == 2 %}Wakil Ketua
-                  {% elif forloop.counter <= 5 %}Instruktur Utama
-                  {% elif forloop.counter <= 10 %}Guru Paket C
-                  {% elif forloop.counter <= 15 %}Guru Paket B
-                  {% elif forloop.counter <= 20 %}Guru Paket A
-                  {% elif forloop.counter <= 25 %}Tenaga Administrasi
-                  {% else %}Instruktur Keterampilan
-                  {% endif %}
-                </p>
-                <div class="social-links">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
+          <div class="team-card text-center bg-white shadow-sm rounded overflow-hidden h-100">
+            <div class="member-image mb-3">
+              <img src="{{ guru.foto.url }}" alt="{{ guru.nama }}" class="img-fluid" style="width:100%; height:250px; object-fit:cover;">
+            </div>
+            <div class="member-info p-3">
+              <h5 class="fw-bold mb-1 text-dark">{{ guru.nama }}</h5>
+              <p class="text-muted small mb-3">{{ guru.jabatan }}</p>
+              <div class="social-links d-flex justify-content-center gap-3">
+                {% if guru.linkedin %}
+                  <a href="{{ guru.linkedin }}" target="_blank"><i class="bi bi-linkedin"></i></a>
+                {% endif %}
+                {% if guru.email %}
+                  <a href="mailto:{{ guru.email }}"><i class="bi bi-envelope"></i></a>
+                {% endif %}
               </div>
             </div>
           </div>
         </div>
         {% endfor %}
-
       </div>
 
       <!-- Pagination & Navigation -->
-      <div class="swiper-pagination mt-3"></div>
+      <div class="swiper-pagination mt-4"></div>
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     </div>
@@ -191,9 +181,9 @@
     new Swiper('.leadership-slider', {
       loop: true,
       slidesPerView: 4,
-      spaceBetween: 20,
+      spaceBetween: 25,
       autoplay: {
-        delay: 2500,
+        delay: 3000,
         disableOnInteraction: false,
       },
       pagination: {
@@ -206,7 +196,7 @@
       },
       breakpoints: {
         320: { slidesPerView: 1 },
-        768: { slidesPerView: 2 },
+        576: { slidesPerView: 2 },
         992: { slidesPerView: 3 },
         1200: { slidesPerView: 4 }
       }

@@ -1,10 +1,21 @@
 from django.db import models
 from django.utils.text import slugify
+from django.core.exceptions import ValidationError
 
 class Program(models.Model):
     """Model untuk program belajar yang ditawarkan PKBM."""
     nama = models.CharField(max_length=100, help_text="Contoh: Paket C Setara SMA")
     deskripsi = models.TextField()
+
+    def __str__(self):
+        return self.nama
+    
+class Profil(models.Model):
+    nama = models.CharField(max_length=100)
+    jabatan = models.CharField(max_length=100)
+    foto = models.ImageField(upload_to='ptk/')
+    email = models.EmailField(blank=True, null=True)
+    linkedin = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.nama
@@ -26,7 +37,7 @@ class Pendaftar(models.Model):
 
     def __str__(self):
         return f"{self.nama_lengkap} - {self.program_pilihan.nama}"
-    
+
 class Galeri(models.Model):
     BULAN_CHOICES = [
         ('01', 'Januari'), ('02', 'Februari'), ('03', 'Maret'),
@@ -34,18 +45,29 @@ class Galeri(models.Model):
         ('07', 'Juli'), ('08', 'Agustus'), ('09', 'September'),
         ('10', 'Oktober'), ('11', 'November'), ('12', 'Desember'),
     ]
+
     judul = models.CharField(max_length=100)
     deskripsi = models.TextField(blank=True)
-    foto = models.ImageField(upload_to='galeri/')
+    foto = models.ImageField(upload_to='galeri/', blank=True, null=True)
     video_url = models.URLField(blank=True, null=True, help_text="Masukkan URL video Facebook atau YouTube (opsional)")
     video_file = models.FileField(upload_to='galeri/video/', blank=True, null=True, help_text="Upload video lokal (mp4/mov)")
     tanggal_upload = models.DateTimeField(auto_now_add=True)
     bulan = models.CharField(max_length=2, choices=BULAN_CHOICES, blank=True)
 
+    def clean(self):
+        """Validasi: wajib isi salah satu antara foto atau video."""
+        if not self.foto and not self.video_url and not self.video_file:
+            raise ValidationError("Harap unggah foto atau video (URL/file). Minimal salah satu harus diisi.")
+        if self.foto and (self.video_url or self.video_file):
+            raise ValidationError("Pilih hanya salah satu: foto atau video — tidak keduanya sekaligus.")
+
     def save(self, *args, **kwargs):
         if not self.bulan and self.tanggal_upload:
             self.bulan = self.tanggal_upload.strftime('%m')
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.judul
 
 
 class Berita(models.Model):

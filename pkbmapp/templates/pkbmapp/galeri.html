@@ -20,22 +20,67 @@
 <!-- templates/pendaftaran/galeri_per_bulan.html -->
 <section class="section py-5">
   <div class="container" data-aos="fade-up">
-    <h2 class="text-center mb-5">Galeri Kegiatan PKBM As-Syari'yah</h2>
+    <h2 class="text-center mb-5 fw-bold text-dark">Galeri Kegiatan PKBM As-Syari'yah</h2>
 
-    {% for bulan, foto_list in galeri_per_bulan.items %}
-      {% if foto_list %}
-      <h4 class="text-dark mt-5">{{ bulan }}</h4>
-      <div class="row g-3">
-        {% for foto in foto_list %}
-        <div class="col-6 col-md-3">
-          <a href="{{ foto.foto.url }}" class="glightbox" data-gallery="gallery-{{ bulan }}">
-            <img src="{{ foto.foto.url }}" class="img-fluid rounded shadow-sm" alt="{{ foto.judul }}">
-          </a>
+    {% for bulan, media_list in galeri_per_bulan.items %}
+      {% if media_list %}
+      <!-- Judul Bulan -->
+      <div class="mb-4 mt-5">
+        <h4 class="text-dark fw-semibold border-start border-4 border-dark ps-3 mb-4">{{ bulan }}</h4>
+      </div>
+
+      <!-- Grid Media -->
+      <div class="row g-4 justify-content-start">
+
+        {% for item in media_list %}
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="media-card bg-white shadow-sm rounded p-2 text-center d-flex flex-column align-items-center" style="height: 100%;">
+
+            <!-- Kontainer persegi -->
+            <div class="media-preview rounded overflow-hidden mb-3"
+                 style="fluid; background-color: #f8f9fa;">
+              {% if item.foto %}
+                <a href="{{ item.foto.url }}" class="glightbox" data-gallery="gallery-{{ bulan }}" title="{{ item.judul }}">
+                  <img src="{{ item.foto.url }}" class="w-100 h-100" style="object-fit: cover;" alt="{{ item.judul }}">
+                </a>
+
+              {% elif item.video_file %}
+                <video controls class="w-100 h-100" style="object-fit: cover; border-radius: 5px;">
+                  <source src="{{ item.video_file.url }}" type="video/mp4">
+                  Browser Anda tidak mendukung video.
+                </video>
+
+              {% elif item.video_url %}
+                <div class="w-100 h-100">
+                  {% if "youtube.com" in item.video_url or "youtu.be" in item.video_url %}
+                    <iframe src="{{ item.video_url|cut:'watch?v='|add:'embed/' }}" 
+                            title="{{ item.judul }}" frameborder="0"
+                            allowfullscreen style="width:100%; height:100%; object-fit:cover;"></iframe>
+                  {% elif "facebook.com" in item.video_url %}
+                    <iframe src="{{ item.video_url }}" 
+                            style="border:none;overflow:hidden;width:100%;height:100%;object-fit:cover;" 
+                            scrolling="no" frameborder="0" allowfullscreen="true"></iframe>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+
+            <!-- Info Media -->
+            <div class="media-info text-center px-2">
+              <h6 class="fw-bold mb-1" style="white-space: normal; word-wrap: break-word;">{{ item.judul }}</h6>
+              {% if item.deskripsi %}
+                <p class="text-muted small mb-0" style="white-space: normal; word-wrap: break-word;">{{ item.deskripsi }}</p>
+              {% endif %}
+            </div>
+
+          </div>
         </div>
         {% endfor %}
-      </div>
+
+      </div> <!-- end row -->
       {% endif %}
     {% endfor %}
+
   </div>
 </section>
 

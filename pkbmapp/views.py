@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Galeri, Berita
+from .models import Galeri, Berita, Profil
 from django.core.paginator import Paginator
 from django.contrib import messages
 from .forms import MasukanSaranForm
@@ -15,7 +15,8 @@ def home(request):
     return render(request, 'pkbmapp/home.html', context)
 
 def profil(request):
-    return render(request, 'pkbmapp/profil.html')
+    ptk_list = Profil.objects.all()
+    return render(request, "pkbmapp/profil.html", {"ptk_list": ptk_list})
 
 def program(request):
     return render(request, 'pkbmapp/program.html')
