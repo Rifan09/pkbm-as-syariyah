@@ -19,6 +19,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '.up.railway.app',   # domain bawaan Railway
+    '.pkbmassyariyah.my.id',  # domain custom Anda
 ]
 
 # =============== APPS ===============
@@ -34,6 +35,9 @@ INSTALLED_APPS = [
     'pendaftaran',
     # Tambahan admin template
     'django_adminlte3',
+    # Cloudinary apps (TAMBAH INI)
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 # =============== MIDDLEWARE ===============
@@ -97,17 +101,29 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# WhiteNoise storage
+# WhiteNoise storage (tetap untuk static files)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Media (upload user)
+# Media (upload user) - GUNAKAN CLOUDINARY
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Cloudinary Configuration (TAMBAH INI)
+if os.environ.get('CLOUDINARY_CLOUD_NAME'):  # Hanya aktif jika ada env variable
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+        'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+        'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+    }
+else:
+    # Fallback ke local storage untuk development
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # =============== SECURITY FOR DEPLOYMENT ===============
 CSRF_TRUSTED_ORIGINS = [
     'https://*.up.railway.app',
     'https://*.pkbmassyariyah.my.id',
+    'https://pkbmassyariyah.my.id',  # tambahkan tanpa subdomain
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

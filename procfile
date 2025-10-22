@@ -1,1 +1,1 @@
-web: gunicorn pkbm.wsgi
+web: python manage.py collectstatic --noinput && gunicorn pkbm.wsgi:application
