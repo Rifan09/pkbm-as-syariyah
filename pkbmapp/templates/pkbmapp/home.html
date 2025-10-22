@@ -12,18 +12,7 @@
           <h1>Selamat Datang di PKBM AS SYAR’IYAH ILUNG</h1>
           <p>Pusat Kegiatan Belajar Masyarakat (PKBM) AS SYAR’IYAH ILUNG hadir sebagai wadah pendidikan non-formal yang berkomitmen untuk memberikan kesempatan belajar bagi semua kalangan masyarakat.</p>
           <div class="stats-row">
-            {% comment %} <div class="stat-item">
-              <span class="stat-number">96%</span>
-              <span class="stat-label">Employment Rate</span>
-            </div> {% endcomment %}
-            {% comment %} <div class="stat-item">
-              <span class="stat-number">12:1</span>
-              <span class="stat-label">Rasio Guru-Siswa</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">3</span>
-              <span class="stat-label">Program</span>
-            </div> {% endcomment %}
+ 
           </div>
           <div class="action-buttons">
             <a href="{% url "pendaftaran" %}" class="btn-primary">Daftar Sekarang</a>
@@ -130,7 +119,7 @@
             <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
           </div>
           <div class="card-body">
-            <p class="text-primary fw-semibold small mb-2">{{ item.kategori }}</p>
+            <p class="text-dark fw-semibold small mb-2">{{ item.kategori }}</p>
             <h4 class="card-title mb-2">
               <a href="{% url 'berita_detail' item.slug %}" class="stretched-link text-decoration-none text-dark">
                 {{ item.judul|truncatechars:80 }}
