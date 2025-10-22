@@ -1,17 +1,11 @@
-# === Core Django ===
-Django>=4.2,<5.0
-
-# === Image & File Upload ===
-Pillow>=10.0.0
-
-# === Static Files (Production) ===
-whitenoise>=6.6.0
-
-# # === Gunicorn (Server untuk deploy di Render/Heroku/Railway) ===
-# gunicorn>=22.0.0
-
-# # === Optional: Environment variable (.env) management ===
-# python-dotenv>=1.0.1
-
-# # === Optional: Untuk PostgreSQL di hosting ===
-# psycopg2-binary>=2.9.9
+asgiref==3.10.0
+Django==4.2.25
+django-adminlte3==0.1.6
+gunicorn==23.0.0
+packaging==25.0
+pillow==12.0.0
+psycopg2-binary==2.9.11
+python-dotenv==1.1.1
+sqlparse==0.5.3
+tzdata==2025.2
+whitenoise==6.11.0
