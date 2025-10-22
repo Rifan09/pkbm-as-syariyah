@@ -1,5 +1,3 @@
-
-
 from pathlib import Path
 import os
 import dj_database_url
@@ -7,15 +5,21 @@ import dj_database_url
 # =============== BASE PROJECT CONFIG ===============
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Secret key aman untuk environment Railway
 SECRET_KEY = os.environ.get(
     'DJANGO_SECRET_KEY',
-    'django-insecure-u7xcylsj8p02kg*j0w%7k^z)oicj6ggw5lq!1y%azr7$=rko79'  # default untuk lokal
+    'django-insecure-u7xcylsj8p02kg*j0w%7k^z)oicj6ggw5lq!1y%azr7$=rko79'  # fallback untuk lokal
 )
 
+# DEBUG aktif hanya jika di lokal
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-# Ganti ini saat sudah deploy
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', 'pkbmassyariyah.my.id']
+# Domain dan host yang diizinkan
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '.up.railway.app',   # domain bawaan Railway
+]
 
 # =============== APPS ===============
 INSTALLED_APPS = [
@@ -25,17 +29,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # my App
+    # My apps
     'pkbmapp',
     'pendaftaran',
-    # Tambahan admin
+    # Tambahan admin template
     'django_adminlte3',
 ]
 
 # =============== MIDDLEWARE ===============
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # agar static bisa dilayani di Render
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # untuk static files di Railway
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -49,7 +53,7 @@ ROOT_URLCONF = 'pkbm.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,11 +69,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'pkbm.wsgi.application'
 
 # =============== DATABASE CONFIG ===============
-# Gunakan SQLite secara default (local)
+# Railway otomatis menyediakan DATABASE_URL untuk PostgreSQL
 DATABASES = {
     'default': dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",  # fallback untuk lokal
         conn_max_age=600,
+        ssl_require=False,  # Railway tidak wajib SSL
     )
 }
 
@@ -92,15 +97,16 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# WhiteNoise: untuk serving static di production
+# WhiteNoise storage
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Media (upload user)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # =============== SECURITY FOR DEPLOYMENT ===============
 CSRF_TRUSTED_ORIGINS = [
-    'https://*.onrender.com',
+    'https://*.up.railway.app',
     'https://*.pkbmassyariyah.my.id',
 ]
 
