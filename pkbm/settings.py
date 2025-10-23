@@ -2,26 +2,13 @@ from pathlib import Path
 import os
 import dj_database_url
 
-# =============== BASE PROJECT CONFIG ===============
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Secret key aman untuk environment Railway
-SECRET_KEY = os.environ.get(
-    'DJANGO_SECRET_KEY',
-    'django-insecure-u7xcylsj8p02kg*j0w%7k^z)oicj6ggw5lq!1y%azr7$=rko79'  # fallback untuk lokal
-)
-
-# DEBUG aktif hanya jika di lokal
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-secret-key')
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-# Domain dan host yang diizinkan
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '.up.railway.app',   # domain bawaan Railway
-]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.up.railway.app']
 
-# =============== APPS ===============
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -29,17 +16,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # My apps
     'pkbmapp',
     'pendaftaran',
-    # Tambahan admin template
     'django_adminlte3',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
-# =============== MIDDLEWARE ===============
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # untuk static files di Railway
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -68,46 +54,39 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pkbm.wsgi.application'
 
-# =============== DATABASE CONFIG ===============
-# Railway otomatis menyediakan DATABASE_URL untuk PostgreSQL
+# ================= DATABASE ==================
 DATABASES = {
     'default': dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",  # fallback untuk lokal
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
         conn_max_age=600,
-        ssl_require=False,  # Railway tidak wajib SSL
+        ssl_require=False,
     )
 }
 
-# =============== PASSWORD VALIDATION ===============
-AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+# ================= CLOUDINARY ==================
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# ================= STATIC & MEDIA ==================
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.up.railway.app',
 ]
 
-# =============== INTERNATIONALIZATION ===============
 LANGUAGE_CODE = 'id'
 TIME_ZONE = 'Asia/Makassar'
 USE_I18N = True
 USE_TZ = True
-
-# =============== STATIC & MEDIA CONFIG ===============
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# WhiteNoise storage
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# Media (upload user)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# =============== SECURITY FOR DEPLOYMENT ===============
-CSRF_TRUSTED_ORIGINS = [
-    'https://*.up.railway.app',
-    'https://*.pkbmassyariyah.my.id',
-]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
