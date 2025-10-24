@@ -22,5 +22,4 @@ env/
 */migrations/__pycache__/
 
 # Django static & media (generated files)
-staticfiles/
 media/
