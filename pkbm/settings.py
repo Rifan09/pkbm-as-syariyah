@@ -1,10 +1,11 @@
 from pathlib import Path
 import os
 import dj_database_url
+import tempfile
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-secret-key')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-key')
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.up.railway.app']
@@ -54,24 +55,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pkbm.wsgi.application'
 
-# ================= DATABASE ==================
+# ==== Database ====
 DATABASES = {
     'default': dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        default=os.environ.get("DATABASE_URL"),
         conn_max_age=600,
-        ssl_require=False,
+        ssl_require=True
     )
 }
 
-# ================= CLOUDINARY ==================
+# ==== Cloudinary ====
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('drptjbbky'),
-    'API_KEY': os.environ.get('428159951645772'),
-    'API_SECRET': os.environ.get('fIQwxPTId0ZK-M_SjNOEeJ82lTs'),
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# ================= STATIC & MEDIA ==================
+# ==== Static & Media ====
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -80,9 +81,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://*.up.railway.app',
-]
+CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app']
 
 LANGUAGE_CODE = 'id'
 TIME_ZONE = 'Asia/Makassar'
