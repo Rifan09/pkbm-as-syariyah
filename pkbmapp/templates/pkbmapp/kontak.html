@@ -1,115 +1,132 @@
 {% extends 'base.html' %}
 {% block title %}Kontak - PKBM{% endblock %}
 {% load static %}
+
 {% block content %}
 
-<!-- Page Title -->
-    <div class="page-title light-background">
-      <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Kontak</h1>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li class="current">Kontak</li>
-          </ol>
-        </nav>
-      </div>
-    </div>
-
-<!-- Contact Section -->
-    <section id="contact" class="contact section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="contact-main-wrapper">
-          <div class="map-wrapper">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3607.0872816283904!2d115.40600837449163!3d-2.519577938216765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMsKwMzEnMTAuNSJTIDExNcKwMjQnMzAuOSJF!5e1!3m2!1sid!2sid!4v1760973028821!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-
-          <div class="contact-content">
-  <div class="container" data-aos="fade-up" data-aos-delay="300">
-
-    <div class="row g-4">
-      <!-- Kartu Lokasi -->
-      <div class="col-md-6">
-        <div class="contact-card h-100 p-3 shadow-sm rounded">
-          <div class="icon-box mb-3">
-            <i class="bi bi-geo-alt fs-3 text-primary"></i>
-          </div>
-          <div class="contact-text">
-            <h4>Lokasi</h4>
-            <p>Jl. H. Damanhuri RT.05 RW.03, Kec. Barabai, Kab. Hulu Sungai Tengah (HST)</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Kartu Telepon -->
-      <div class="col-md-6">
-        <div class="contact-card h-100 p-3 shadow-sm rounded">
-          <div class="icon-box mb-3">
-            <i class="bi bi-telephone fs-3 text-primary"></i>
-          </div>
-          <div class="contact-text">
-            <h4>Telepon</h4>
-            <p>Hikmatunnisa, S.Pd.I — 0852 5441 3656</p>
-            <p>Saleha, S.Pd — 0852 4088 9156</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Formulir Masukan & Saran -->
-    <div class="contact-form-container mt-5" data-aos="fade-up" data-aos-delay="400">
-      <div class="p-4 shadow-sm bg-white rounded">
-        <h3 class="mb-3">Masukan & Saran</h3>
-        <p>Silakan kirimkan pesan, pertanyaan, atau saran Anda untuk PKBM As-Syari’yah.</p>
-
-        <form method="POST" class="php-email-form">
-          {% csrf_token %}
-          <div class="row">
-            <div class="col-md-6 form-group">
-              {{ form.nama }}
-            </div>
-            <div class="col-md-6 form-group mt-3 mt-md-0">
-              {{ form.email }}
-            </div>
-          </div>
-          <div class="form-group mt-3">
-            {{ form.subjek }}
-          </div>
-          <div class="form-group mt-3">
-            {{ form.pesan }}
-          </div>
-
-          <div class="my-3">
-            {% if messages %}
-              {% for message in messages %}
-                <div class="alert alert-success mt-3">{{ message }}</div>
-              {% endfor %}
-            {% endif %}
-          </div>
-
-          <div class="text-center mt-4">
-            <button type="submit" class="btn btn-primary px-4">Kirim Pesan</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
+<!-- ===========================
+     Page Title
+=========================== -->
+<div class="page-title light-background">
+  <div class="container d-lg-flex justify-content-between align-items-center">
+    <h1 class="mb-2 mb-lg-0">Kontak</h1>
+    <nav class="breadcrumbs">
+      <ol>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li class="current">Kontak</li>
+      </ol>
+    </nav>
   </div>
 </div>
 
-                
-                  <div class="social-links">
-                    <a href="#"><i class="bi bi-twitter"></i></a>
-                    <a href="#"><i class="bi bi-facebook"></i></a>
-                    <a href="#"><i class="bi bi-instagram"></i></a>
-                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                  </div>
-                </div>
+<!-- ===========================
+     Contact Section
+=========================== -->
+<section id="contact" class="contact section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <!-- Google Maps -->
+    <div class="map-wrapper mb-5">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3607.0872816283904!2d115.40600837449163!3d-2.519577938216765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMsKwMzEnMTAuNSJTIDExNcKwMjQnMzAuOSJF!5e1!3m2!1sid!2sid!4v1760973028821!5m2!1sid!2sid"
+        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <!-- ===========================
+         Contact Content
+    =========================== -->
+    <div class="contact-content" data-aos="fade-up" data-aos-delay="200">
+
+      <!-- Contact Info Cards -->
+      <div class="row g-4">
+        <!-- Lokasi -->
+        <div class="col-md-6">
+          <div class="contact-card h-100 p-3 shadow-sm rounded bg-white">
+            <div class="icon-box mb-3">
+              <i class="bi bi-geo-alt fs-3 text-primary"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Lokasi</h4>
+              <p>Jl. H. Damanhuri RT.05 RW.03, Kec. Barabai, Kab. Hulu Sungai Tengah (HST)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Telepon -->
+        <div class="col-md-6">
+          <div class="contact-card h-100 p-3 shadow-sm rounded bg-white">
+            <div class="icon-box mb-3">
+              <i class="bi bi-telephone fs-3 text-primary"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Telepon</h4>
+              <p>Hikmatunnisa, S.Pd.I — 0852 5441 3656</p>
+              <p>Saleha, S.Pd — 0852 4088 9156</p>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  <!-- /Contact Section -->
+      <!-- /End Cards -->
+
+      <!-- ===========================
+           Contact Form
+      =========================== -->
+      <div class="contact-form-container mt-5" data-aos="fade-up" data-aos-delay="400">
+        <div class="p-4 shadow-sm bg-white rounded">
+          <h3 class="mb-3">Masukan & Saran</h3>
+          <p>Silakan kirimkan pesan, pertanyaan, atau saran Anda untuk PKBM As-Syari’yah.</p>
+
+          <form method="POST" class="php-email-form">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6 form-group">
+                {{ form.nama }}
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                {{ form.email }}
+              </div>
+            </div>
+
+            <div class="form-group mt-3">
+              {{ form.subjek }}
+            </div>
+
+            <div class="form-group mt-3">
+              {{ form.pesan }}
+            </div>
+
+            <div class="my-3">
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="alert alert-success mt-3">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+            </div>
+
+            <div class="text-center mt-4">
+              <button type="submit" class="btn btn-primary px-4">Kirim Pesan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- /End Form -->
+
+      <!-- ===========================
+           Social Media Links
+      =========================== -->
+      <div class="social-links text-center mt-5">
+        <a href="#" class="mx-2"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="mx-2"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="mx-2"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="mx-2"><i class="bi bi-linkedin"></i></a>
+      </div>
+
+    </div> <!-- End .contact-content -->
+
+  </div> <!-- End .container -->
+</section>
+<!-- /Contact Section -->
+
 {% endblock %}
