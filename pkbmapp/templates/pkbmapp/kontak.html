@@ -22,110 +22,110 @@
 <!-- ===========================
      Contact Section
 =========================== -->
-<section id="contact" class="contact section">
+<section id="contact" class="contact section py-5">
   <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-    <!-- Google Maps -->
-    <div class="map-wrapper mb-5">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3607.0872816283904!2d115.40600837449163!3d-2.519577938216765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMsKwMzEnMTAuNSJTIDExNcKwMjQnMzAuOSJF!5e1!3m2!1sid!2sid!4v1760973028821!5m2!1sid!2sid"
-        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
+    <div class="row g-4 align-items-start">
 
-    <!-- ===========================
-         Contact Content
-    =========================== -->
-    <div class="contact-content" data-aos="fade-up" data-aos-delay="200">
+      <!-- ===========================
+           Map (Kiri)
+      =========================== -->
+      <div class="col-lg-6">
+        <div class="map-wrapper shadow-sm rounded overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3607.0872816283904!2d115.40600837449163!3d-2.519577938216765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMsKwMzEnMTAuNSJTIDExNcKwMjQnMzAuOSJF!5e1!3m2!1sid!2sid!4v1760973028821!5m2!1sid!2sid"
+            width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
 
-      <!-- Contact Info Cards -->
-      <div class="row g-4">
-        <!-- Lokasi -->
-        <div class="col-md-6">
-          <div class="contact-card h-100 p-3 shadow-sm rounded bg-white">
-            <div class="icon-box mb-3">
-              <i class="bi bi-geo-alt fs-3 text-primary"></i>
+      <!-- ===========================
+           Contact Info + Form (Kanan)
+      =========================== -->
+      <div class="col-lg-6">
+
+        <!-- Info Cards -->
+        <div class="row g-4">
+          <!-- Lokasi -->
+          <div class="col-md-6">
+            <div class="contact-card h-100 p-3 shadow-sm rounded bg-white">
+              <div class="icon-box mb-3">
+                <i class="bi bi-geo-alt fs-3 text-primary"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Lokasi</h4>
+                <p>Jl. H. Damanhuri RT.05 RW.03, Kec. Barabai, Kab. Hulu Sungai Tengah (HST)</p>
+              </div>
             </div>
-            <div class="contact-text">
-              <h4>Lokasi</h4>
-              <p>Jl. H. Damanhuri RT.05 RW.03, Kec. Barabai, Kab. Hulu Sungai Tengah (HST)</p>
+          </div>
+
+          <!-- Telepon -->
+          <div class="col-md-6">
+            <div class="contact-card h-100 p-3 shadow-sm rounded bg-white">
+              <div class="icon-box mb-3">
+                <i class="bi bi-telephone fs-3 text-primary"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Telepon</h4>
+                <p>Hikmatunnisa, S.Pd.I — 0852 5441 3656</p>
+                <p>Saleha, S.Pd — 0852 4088 9156</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Telepon -->
-        <div class="col-md-6">
-          <div class="contact-card h-100 p-3 shadow-sm rounded bg-white">
-            <div class="icon-box mb-3">
-              <i class="bi bi-telephone fs-3 text-primary"></i>
-            </div>
-            <div class="contact-text">
-              <h4>Telepon</h4>
-              <p>Hikmatunnisa, S.Pd.I — 0852 5441 3656</p>
-              <p>Saleha, S.Pd — 0852 4088 9156</p>
-            </div>
+        <!-- Form -->
+        <div class="contact-form-container mt-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="p-4 shadow-sm bg-white rounded">
+            <h3 class="mb-3">Masukan & Saran</h3>
+            <p>Silakan kirimkan pesan, pertanyaan, atau saran Anda untuk PKBM As-Syari’yah.</p>
+
+            <form method="POST" class="php-email-form">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  {{ form.nama }}
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  {{ form.email }}
+                </div>
+              </div>
+
+              <div class="form-group mt-3">
+                {{ form.subjek }}
+              </div>
+
+              <div class="form-group mt-3">
+                {{ form.pesan }}
+              </div>
+
+              <div class="my-3">
+                {% if messages %}
+                  {% for message in messages %}
+                    <div class="alert alert-success mt-3">{{ message }}</div>
+                  {% endfor %}
+                {% endif %}
+              </div>
+
+              <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary px-4">Kirim Pesan</button>
+              </div>
+            </form>
           </div>
         </div>
-      </div>
-      <!-- /End Cards -->
 
-      <!-- ===========================
-           Contact Form
-      =========================== -->
-      <div class="contact-form-container mt-5" data-aos="fade-up" data-aos-delay="400">
-        <div class="p-4 shadow-sm bg-white rounded">
-          <h3 class="mb-3">Masukan & Saran</h3>
-          <p>Silakan kirimkan pesan, pertanyaan, atau saran Anda untuk PKBM As-Syari’yah.</p>
-
-          <form method="POST" class="php-email-form">
-            {% csrf_token %}
-            <div class="row">
-              <div class="col-md-6 form-group">
-                {{ form.nama }}
-              </div>
-              <div class="col-md-6 form-group mt-3 mt-md-0">
-                {{ form.email }}
-              </div>
-            </div>
-
-            <div class="form-group mt-3">
-              {{ form.subjek }}
-            </div>
-
-            <div class="form-group mt-3">
-              {{ form.pesan }}
-            </div>
-
-            <div class="my-3">
-              {% if messages %}
-                {% for message in messages %}
-                  <div class="alert alert-success mt-3">{{ message }}</div>
-                {% endfor %}
-              {% endif %}
-            </div>
-
-            <div class="text-center mt-4">
-              <button type="submit" class="btn btn-primary px-4">Kirim Pesan</button>
-            </div>
-          </form>
+        <!-- Sosial Media -->
+        <div class="social-links text-center mt-5">
+          <a href="#" class="mx-2"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="mx-2"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="mx-2"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="mx-2"><i class="bi bi-linkedin"></i></a>
         </div>
-      </div>
-      <!-- /End Form -->
 
-      <!-- ===========================
-           Social Media Links
-      =========================== -->
-      <div class="social-links text-center mt-5">
-        <a href="#" class="mx-2"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="mx-2"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="mx-2"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="mx-2"><i class="bi bi-linkedin"></i></a>
-      </div>
-
-    </div> <!-- End .contact-content -->
-
-  </div> <!-- End .container -->
+      </div> <!-- /End Kanan -->
+    </div> <!-- /End Row -->
+  </div> <!-- /End Container -->
 </section>
 <!-- /Contact Section -->
 
